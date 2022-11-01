@@ -9,13 +9,8 @@ from .models import Tablero
 
 # Create your views here.
 
-class ProductCreate(SuccessMessageMixin, CreateView): 
-    model = Product
-    form_class = ProductForm
-    success_url = reverse_lazy('product_list')
-    success_message = "Product successfully created!"
 
-class ProductDelete(SuccessMessageMixin, DeleteView):
-    model = Product
-    success_url = reverse_lazy('product_list')
-    success_message = "Product successfully deleted!"
+
+class ListarTareas(ListView):
+    model = Tablero
+    template_name = 'home.html'

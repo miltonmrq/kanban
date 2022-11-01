@@ -1,6 +1,6 @@
 from django.urls import path, include
-from . import views
+from .views import ListarTareas
 
 urlpatterns = [
-    path('', views.Listar_Tareas.asview())
+    path('', ListarTareas.as_view())
 ]

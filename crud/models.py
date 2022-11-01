@@ -18,8 +18,7 @@ class Lista(models.Model):
     titulo = models.CharField(max_length=255, blank=False, null=False)
     imagen = models.ImageField(blank=True, upload_to='')
     def __str__(self):
-        return {self.tablero}
-
+        return f'{self.tablero}'
 
 
 
