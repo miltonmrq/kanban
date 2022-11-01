@@ -16,6 +16,7 @@ class Tablero(models.Model):
 class Lista(models.Model):
     tablero = models.ForeignKey(Tablero, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=255, blank=False, null=False)
+    imagen = models.ImageField(blank=True, upload_to='')
     def __str__(self):
         return {self.tablero}
 
