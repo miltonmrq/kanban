@@ -1,26 +1,39 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
+from datetime import datetime, timedelta
 
 # Create your models here.
 
+
+def one_week_hence():
+    return timezone.now() + timezone.timedelta(days=7)
+
 class Tablero(models.Model):
-    encargado = models.CharField(max_length=255)
     titulo = models.CharField(max_length=255, blank=False, null=False)
-    descripcion = models.CharField(max_length=255, blank=False, null=False)
-    creado = models.DateTimeField(default=timezone.now)
-    estado = models.BooleanField(default=False)
+    
+    
     def __str__(self):
-        return f'{self.titulo} de {self.encargado}'
+        return f'{self.titulo}'
 
-class Lista(models.Model):
+
+
+
+
+class Estado(models.Model):
+    
+
+
+
+
+
+class Tarea(models.Model):
     tablero = models.ForeignKey(Tablero, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=255, blank=False, null=False)
-    imagen = models.ImageField(blank=True, upload_to='')
+    titulo = models.CharField(max_length=255, unique=True)
+    descripcion = models.CharField(max_length=255, blank=True, null=True)
+    creado = models.DateTimeField(default=timezone.now)
+    due_date = models.DateTimeField(default=one_week_hence)
+    estado = models.CharField(max_length=255)
     def __str__(self):
-        return f'{self.tablero}'
-
-
-
-
+        return f'{self.titulo}'
 
