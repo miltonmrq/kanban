@@ -17,23 +17,15 @@ class Tablero(models.Model):
         return f'{self.titulo}'
 
 
-
-
-
-class Estado(models.Model):
     
-
-
-
-
-
 class Tarea(models.Model):
     tablero = models.ForeignKey(Tablero, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=255, unique=True)
     descripcion = models.CharField(max_length=255, blank=True, null=True)
     creado = models.DateTimeField(default=timezone.now)
     due_date = models.DateTimeField(default=one_week_hence)
-    estado = models.CharField(max_length=255)
     def __str__(self):
-        return f'{self.titulo}'
+        return f'{self.titulo} {self.descripcion}'
 
+
+    

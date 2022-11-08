@@ -1,25 +1,43 @@
+{% extends "base.html" %}
+{% block content %} 
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <title>home</title>
-</head>
-<body>
+
+
+
+
+
+
+
+
+
+    <div id="addTodoListDiv">
+        <input id="addTodoListInput" class="comment">
+        <button id="addTodoListButton" class="btn-save">Añadir nueva tarea para hacer</button>
+    </div>
+    
+    <div id="root"></div>
+
+  
+
+
+
+
+
     <p>        
-        {% for lista in listas %}
-        <p>{{ lista.nombre }}</p>
-        {% endfor %}
-    </p>
+        <ul>
+            {% for Tarea in object_list %}
+            <li>
+                <div>
+                    {{ Tarea.titulo}}
+                    {{ Tarea.descripcion }}
+                </div>
+            </li>
+            {% empty %}
+            <h4>¡No hay tareas!</h4>
+            {% endfor %}
+        </ul>
 
+{% endblock %}
 
-
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>   
-</body>
 </html>
